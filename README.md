@@ -8,10 +8,12 @@
   - share
   - scan
 - RecyclerView and CardView
-- AppBarLayout
+- AppBarLayout：Hide the Toolbar when you scroll down and redisplay it when you scroll up.
 
 
 
 commit3: add RecyclerView and CardView
 
-commit4: add AppBarLayout ( make the navigation bar float on the images) 
+commit4: add AppBarLayout ( make the Toolbar float on the images) 
+
+commit5: add an interesting feature to the AppBarLayout
