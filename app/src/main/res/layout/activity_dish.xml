@@ -68,6 +68,13 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-    
+    <!-- add the comment floating button for the card-->
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/card_comment"
+        app:layout_anchor="@id/card_appBar"
+        app:layout_anchorGravity="bottom|end"/>
 
 </android.support.design.widget.CoordinatorLayout>

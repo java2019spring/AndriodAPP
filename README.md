@@ -11,6 +11,7 @@
 - AppBarLayout：Hide the Toolbar when you scroll down and redisplay it when you scroll up.
 - SwipeRefresh: Refresh the images when you swipe the window
 - CollapsingToolbar: add CollapsingToolbar for each card
+- Floating button: add a floating button for commenting on the dish (each card)
 
 
 
@@ -23,3 +24,5 @@ commit5: add an interesting feature to the AppBarLayout
 commit6: add SwipeRefresh to improve the user experience
 
 commit7: add CollapsingToolbar for each card
+
+commit8: add a floating button for commenting on the dish in each card
