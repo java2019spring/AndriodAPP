@@ -74,6 +74,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:src="@drawable/card_comment"
+        app:backgroundTint="@color/card_comment"
+        app:rippleColor="@color/card_comment_clicked"
         app:layout_anchor="@id/card_appBar"
         app:layout_anchorGravity="bottom|end"/>
 

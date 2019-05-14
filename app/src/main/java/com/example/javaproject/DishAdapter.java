@@ -1,6 +1,7 @@
 package com.example.javaproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.RecyclerView;
@@ -48,7 +49,24 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.ViewHolder> {
             mContext = parent.getContext();
 
         View view = LayoutInflater.from(mContext).inflate(R.layout.dish_item, parent, false);
-        return new ViewHolder(view);
+
+        //click the card
+        final ViewHolder holder = new ViewHolder(view);
+        holder.cardView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                int position = holder.getAdapterPosition();
+                Dish dish = mDishList.get(position);
+                //save the dish data to the intent
+                Intent intent = new Intent(mContext, DishActivity.class);
+                intent.putExtra(DishActivity.DISH_NAME, dish.getName());
+                intent.putExtra(DishActivity.DISH_IMAGE_ID, dish.getImageId());
+                mContext.startActivity(intent);
+            }
+        });
+        return holder;
     }
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
