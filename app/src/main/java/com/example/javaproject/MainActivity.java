@@ -7,6 +7,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.annotation.NonNull;
 import android.view.Menu;
@@ -14,30 +16,44 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
-    private TextView mTextMessage;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_shopping:
-                    mTextMessage.setText(R.string.title_shopping);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
+    private Dish[] dishes = {
+            new Dish("dish_1", R.drawable.dish_1), new Dish("dish_2", R.drawable.dish_2),
+            new Dish("dish_3", R.drawable.dish_3), new Dish("dish_4", R.drawable.dish_3),
+            new Dish("dish_5", R.drawable.dish_5), new Dish("dish_6", R.drawable.dish_6),
+            new Dish("dish_7", R.drawable.dish_7), new Dish("dish_8", R.drawable.dish_8),
+            new Dish("dish_9", R.drawable.dish_9), new Dish("dish_10", R.drawable.dish_10)
     };
+    private List<Dish> dishList = new ArrayList<>();
+    private DishAdapter adapter;
+//    private TextView mTextMessage;
+//
+//    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+//            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+//
+//        @Override
+//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//            switch (item.getItemId()) {
+//                case R.id.navigation_home:
+//                    mTextMessage.setText(R.string.title_home);
+//                    return true;
+//                case R.id.navigation_shopping:
+//                    mTextMessage.setText(R.string.title_shopping);
+//                    return true;
+//                case R.id.navigation_notifications:
+//                    mTextMessage.setText(R.string.title_notifications);
+//                    return true;
+//            }
+//            return false;
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +78,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        initDishes();
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);   //2 grids
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new DishAdapter(dishList);
+        recyclerView.setAdapter(adapter);
+
 //        BottomNavigationView navView = findViewById(R.id.nav_view);
 //        mTextMessage = findViewById(R.id.message);
 //        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    private void initDishes()
+    {
+        dishList.clear();
+        for(int i = 0; i < 20; i++)     //select 20 images at random to display.
+        {
+            Random random = new Random();
+            int index = random.nextInt(dishes.length);
+            dishList.add(dishes[index]);
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu)
