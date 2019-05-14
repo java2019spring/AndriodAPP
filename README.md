@@ -12,6 +12,7 @@
 - SwipeRefresh: Refresh the images when you swipe the window
 - CollapsingToolbar: add CollapsingToolbar for each card
 - Floating button: add a floating button for commenting on the dish (each card)
+- fitsSystemWindows: beautify the bar and the system window
 
 
 
@@ -28,3 +29,5 @@ commit7: add CollapsingToolbar for each card
 commit8: add a floating button for commenting on the dish in each card
 
 commit9: fix bugs
+
+commit10: fit system window: beautify the view for each card

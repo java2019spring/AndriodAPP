@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DishActivityTheme." parent="AppTheme">
+        <!-- Do nothing here. Just adapt it to the version before android 5.0-->
+    </style>
+
 </resources>
