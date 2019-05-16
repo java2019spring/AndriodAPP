@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.javaproject">
+    <!-- declare the permission to write external storage-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -9,11 +13,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DishActivity"
-            android:theme="@style/DishActivityTheme">
-        </activity>
+
+        <provider
+            android:authorities="com.example.cameraalbum.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".ShoppingCartActivity"></activity>
+        <activity
+            android:name=".DishActivity"
+            android:theme="@style/DishActivityTheme"></activity>
         <activity
             android:name=".MainActivity"
+            android:launchMode="singleTask"
             android:label="@string/title_home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

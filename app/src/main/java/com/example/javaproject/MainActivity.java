@@ -1,5 +1,6 @@
 package com.example.javaproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -156,6 +157,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.scan:
                 Toast.makeText(this, "You clicked scan", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.shopping:
+                //Toast.makeText(this, "You clicked comment", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.comment:
+                Toast.makeText(this, "You clicked comment", Toast.LENGTH_SHORT).show();
                 break;
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
