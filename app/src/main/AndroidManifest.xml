@@ -24,7 +24,10 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".ShoppingCartActivity"></activity>
+        <activity
+            android:name=".ShoppingCartActivity"
+            android:label="Shopping Cart">
+        </activity>
         <activity
             android:name=".DishActivity"
             android:theme="@style/DishActivityTheme"></activity>

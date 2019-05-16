@@ -12,6 +12,11 @@
         android:title="@string/ic_scan"
         app:showAsAction="always"/>
     <item
+        android:id="@+id/homepage"
+        android:icon="@drawable/page_choice"
+        android:title="Home"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/shopping"
         android:icon="@drawable/page_choice"
         android:title="@string/shopping"

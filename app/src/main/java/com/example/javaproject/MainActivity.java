@@ -158,6 +158,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.scan:
                 Toast.makeText(this, "You clicked scan", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.homepage:
+                Toast.makeText(this, "This is homepage!", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.shopping:
                 //Toast.makeText(this, "You clicked comment", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);

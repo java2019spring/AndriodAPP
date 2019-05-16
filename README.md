@@ -15,6 +15,7 @@
 - fitsSystemWindows: beautify the bar and the system window
 - camera
 - choose photo from local album + improve compatibility
+- card view for the photo
 
 
 
@@ -37,3 +38,5 @@ commit10: fit system window: beautify the view for each card
 commit11: call camera
 
 commit12: choose photo from local album + improve compatibility
+
+commit13: add card view for the photo
