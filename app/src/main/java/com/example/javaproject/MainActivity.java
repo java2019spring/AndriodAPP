@@ -162,12 +162,15 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "This is homepage!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.shopping:
-                //Toast.makeText(this, "You clicked comment", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
                 startActivity(intent);
                 break;
             case R.id.comment:
                 Toast.makeText(this, "You clicked comment", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.toolbar_log_out:
+                Intent intent3 = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent3);
                 break;
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);

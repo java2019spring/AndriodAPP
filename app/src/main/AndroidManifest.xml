@@ -16,6 +16,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".SignupActivity"
+            android:label="Sign up">
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="Login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -29,20 +41,14 @@
 
         <activity
             android:name=".ShoppingCartActivity"
-            android:label="Shopping Cart"></activity>
+            android:label="Shopping Cart" />
         <activity
             android:name=".DishActivity"
             android:theme="@style/DishActivityTheme" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_home"
-            android:launchMode="singleTask">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:launchMode="singleTask"></activity>
     </application>
 
 </manifest>

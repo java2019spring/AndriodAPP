@@ -183,6 +183,10 @@ public class ShoppingCartActivity extends AppCompatActivity {
             case R.id.comment:
                 Toast.makeText(this, "You clicked comment", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.toolbar_log_out:
+                Intent intent3 = new Intent(ShoppingCartActivity.this, LoginActivity.class);
+                startActivity(intent3);
+                break;
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;

@@ -17,6 +17,7 @@
 - choose photo from local album + improve compatibility
 - card view for the photo
 - jump to Alipay
+- add Login and sign up
 
 
 
@@ -43,3 +44,5 @@ commit12: choose photo from local album + improve compatibility
 commit13: add card view for the photo
 
 commit14: add choice to jump to Alipay
+
+commit15: add Login and sign up
