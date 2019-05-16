@@ -16,6 +16,7 @@
 - camera
 - choose photo from local album + improve compatibility
 - card view for the photo
+- jump to Alipay
 
 
 
@@ -40,3 +41,5 @@ commit11: call camera
 commit12: choose photo from local album + improve compatibility
 
 commit13: add card view for the photo
+
+commit14: add choice to jump to Alipay
