@@ -19,6 +19,7 @@
 - jump to Alipay
 - add Login and sign up
 - share
+- scan
 
 
 
@@ -49,3 +50,5 @@ commit14: add choice to jump to Alipay
 commit15: add Login and sign up
 
 commit16: add the function of sharing
+
+commit17: add the function of scanning

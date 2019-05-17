@@ -1,9 +1,13 @@
 package com.example.javaproject;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -17,6 +21,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.zxing.activity.CaptureActivity;
+import com.google.zxing.util.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -160,14 +167,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
                 break;
             case R.id.scan:
-                Toast.makeText(this, "You clicked scan", Toast.LENGTH_SHORT).show();
+                startQrCode();
                 break;
             case R.id.homepage:
                 Toast.makeText(this, "This is homepage!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.shopping:
-                Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
-                startActivity(intent);
+                Intent intent_shopping = new Intent(MainActivity.this, ShoppingCartActivity.class);
+                startActivity(intent_shopping);
                 break;
             case R.id.comment:
                 Toast.makeText(this, "You clicked comment", Toast.LENGTH_SHORT).show();
@@ -183,4 +190,49 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //扫描结果回调
+        if (requestCode == Constant.REQ_QR_CODE && resultCode == RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            String scanResult = bundle.getString(Constant.INTENT_EXTRA_KEY_QR_SCAN);
+            Toast.makeText(MainActivity.this, scanResult, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case Constant.REQ_PERM_CAMERA:
+                // 摄像头权限申请
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // 获得授权
+                    startQrCode();
+                } else {
+                    // 被禁止授权
+                    Toast.makeText(MainActivity.this, "请至权限中心打开本应用的相机访问权限", Toast.LENGTH_LONG).show();
+                }
+                break;
+        }
+    }
+
+    // 开始扫码
+    private void startQrCode() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                Toast.makeText(MainActivity.this, "请至权限中心打开本应用的相机访问权限", Toast.LENGTH_LONG).show();
+            }
+            // 申请权限
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, Constant.REQ_PERM_CAMERA);
+            return;
+        }
+
+        // 二维码扫码
+        Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
+        startActivityForResult(intent, Constant.REQ_QR_CODE);
+    }
+
 }
