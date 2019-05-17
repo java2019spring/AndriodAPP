@@ -20,6 +20,7 @@
 - add Login and sign up
 - share
 - scan
+- plate CV
 
 
 
@@ -52,3 +53,5 @@ commit15: add Login and sign up
 commit16: add the function of sharing
 
 commit17: add the function of scanning
+
+commit18: add plate CV

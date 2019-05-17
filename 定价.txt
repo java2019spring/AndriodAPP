@@ -1,0 +1,7 @@
+蓝色 blue 8
+绿色 green 10
+紫色 purple 12
+黄色 yello 16
+橙色 orange 18
+红色 red 20
+咖啡 coffee 24

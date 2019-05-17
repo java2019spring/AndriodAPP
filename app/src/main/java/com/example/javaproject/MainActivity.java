@@ -3,6 +3,7 @@ package com.example.javaproject;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -199,6 +200,10 @@ public class MainActivity extends AppCompatActivity {
             Bundle bundle = data.getExtras();
             String scanResult = bundle.getString(Constant.INTENT_EXTRA_KEY_QR_SCAN);
             Toast.makeText(MainActivity.this, scanResult, Toast.LENGTH_LONG).show();
+//            Intent intent =new Intent(Intent.ACTION_VIEW);
+//            Uri uri = Uri.parse(scanResult);
+//            intent.setData(uri);
+//            startActivity(intent);
         }
     }
 

@@ -37,8 +37,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+
+import org.opencv.android.OpenCVLoader;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -48,6 +51,12 @@ import java.util.List;
 import java.util.Map;
 
 public class ShoppingCartActivity extends AppCompatActivity {
+    static {
+        if(!OpenCVLoader.initDebug())
+        {
+            Log.d("opencv","初始化失败");
+        }
+    }
 
     private DrawerLayout mDrawerLayout;
     private DishAdapter adapter;
@@ -57,6 +66,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
     private ImageView picture;
     private Uri imageUri;
     private static final String TAG = "ShoppingCartActivity";
+    private Button Pay;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,7 +157,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         });
 
         //pay
-        Button Pay = (Button) findViewById(R.id.pay);
+        Pay = (Button) findViewById(R.id.pay);
         Pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -287,6 +298,19 @@ public class ShoppingCartActivity extends AppCompatActivity {
             imagePath = uri.getPath();
 
         displayImage(imagePath);
+        Recognize recognize = new Recognize();
+        int[] plate_num = recognize.RecognizeRun(imagePath);
+        int prices[] = {8, 10, 12, 16, 18, 20, 24};
+        int price  = 0;
+        for(int i = 0; i< 7; i++)
+            price += prices[i] * plate_num[i];
+        String pay_str = String.format("Pay now! ￥%d.0", price);
+        Pay.setText(pay_str);
+
+        String plate_info = String.format("Blue(￥8): %d       Green(￥10): %d       Purple(￥12): %d\nYellow(￥16): %d       Orange(￥18): %d       Red(￥20): %d       Coffee(￥24): %d",
+                plate_num[0], plate_num[1], plate_num[2], plate_num[3], plate_num[4], plate_num[5], plate_num[6]);
+        textView = (TextView) findViewById(R.id.plate_intro1);
+        textView.setText(plate_info);
     }
 
     private void handleImageBeforeKitKat(Intent data)
