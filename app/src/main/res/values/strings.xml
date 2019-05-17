@@ -11,4 +11,5 @@
     <string name="nav_phone">Phone Number</string>
     <string name="nav_membership">Membership</string>
     <string name="username">不学习我们就做不了朋友</string>
+    <string name="send_to">Share the App to ...</string>
 </resources>

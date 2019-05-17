@@ -153,7 +153,11 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.share:
-                Toast.makeText(this, "You clicked share", Toast.LENGTH_SHORT).show();
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Yummy is so handful! Come to download it!");
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
                 break;
             case R.id.scan:
                 Toast.makeText(this, "You clicked scan", Toast.LENGTH_SHORT).show();

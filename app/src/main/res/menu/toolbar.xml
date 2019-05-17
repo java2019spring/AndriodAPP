@@ -22,13 +22,13 @@
         android:title="@string/shopping"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/toolbar_log_out"
-        android:icon="@drawable/page_choice"
-        android:title="Log out"
-        app:showAsAction="never"/>
-    <item
         android:id="@+id/comment"
         android:icon="@drawable/page_choice"
         android:title="Comment"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/toolbar_log_out"
+        android:icon="@drawable/page_choice"
+        android:title="Log out"
         app:showAsAction="never"/>
 </menu>

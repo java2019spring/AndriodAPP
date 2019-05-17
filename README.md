@@ -18,6 +18,7 @@
 - card view for the photo
 - jump to Alipay
 - add Login and sign up
+- share
 
 
 
@@ -46,3 +47,5 @@ commit13: add card view for the photo
 commit14: add choice to jump to Alipay
 
 commit15: add Login and sign up
+
+commit16: add the function of sharing
