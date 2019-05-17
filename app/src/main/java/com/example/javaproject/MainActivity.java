@@ -178,7 +178,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent_shopping);
                 break;
             case R.id.comment:
-                Toast.makeText(this, "You clicked comment", Toast.LENGTH_SHORT).show();
+                Intent intent_comment = new Intent(MainActivity.this, CommentActivity.class);
+                startActivity(intent_comment);
                 break;
             case R.id.toolbar_log_out:
                 Intent intent3 = new Intent(MainActivity.this, LoginActivity.class);

@@ -21,6 +21,7 @@
 - share
 - scan
 - plate CV
+- comment
 
 
 
@@ -55,3 +56,5 @@ commit16: add the function of sharing
 commit17: add the function of scanning
 
 commit18: add plate CV
+
+commit19: add comment
