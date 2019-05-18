@@ -35,38 +35,20 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
 
     private Dish[] dishes = {
-            new Dish("dish_1", R.drawable.dish_1), new Dish("dish_2", R.drawable.dish_2),
-            new Dish("dish_3", R.drawable.dish_3), new Dish("dish_4", R.drawable.dish_3),
-            new Dish("dish_5", R.drawable.dish_5), new Dish("dish_6", R.drawable.dish_6),
-            new Dish("dish_7", R.drawable.dish_7), new Dish("dish_8", R.drawable.dish_8),
-            new Dish("dish_9", R.drawable.dish_9), new Dish("dish_10", R.drawable.dish_10)
+            new Dish("心相印", R.drawable.dish_1), new Dish("长脚蟹", R.drawable.dish_2),
+            new Dish("三文鱼千层", R.drawable.dish_3), new Dish("希鲮鱼", R.drawable.dish_3),
+            new Dish("玉子三文鱼", R.drawable.dish_5), new Dish("黄金三文鱼", R.drawable.dish_6),
+            new Dish("蟹肉芒果千层", R.drawable.dish_7), new Dish("荣螺", R.drawable.dish_8),
+            new Dish("北极贝", R.drawable.dish_9), new Dish("樱花卷", R.drawable.dish_10),
+            new Dish("加州卷", R.drawable.dish_11), new Dish("蟹柳扇贝卷", R.drawable.dish_12),
+            new Dish("玻璃虾刺身", R.drawable.dish_13), new Dish("希鲮鱼刺身", R.drawable.dish_14),
+            new Dish("北极贝王刺身", R.drawable.dish_15), new Dish("飞鱼子手卷", R.drawable.dish_16)
     };
     private List<Dish> dishList = new ArrayList<>();
     private DishAdapter adapter;
     private SwipeRefreshLayout swipeRefresh;
 
     private String account;
-//    private TextView mTextMessage;
-//
-//    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-//            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-//
-//        @Override
-//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//            switch (item.getItemId()) {
-//                case R.id.navigation_home:
-//                    mTextMessage.setText(R.string.title_home);
-//                    return true;
-//                case R.id.navigation_shopping:
-//                    mTextMessage.setText(R.string.title_shopping);
-//                    return true;
-//                case R.id.navigation_notifications:
-//                    mTextMessage.setText(R.string.title_notifications);
-//                    return true;
-//            }
-//            return false;
-//        }
-//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,9 +96,6 @@ public class MainActivity extends AppCompatActivity {
                 refreshDishes();
             }
         });
-//        BottomNavigationView navView = findViewById(R.id.nav_view);
-//        mTextMessage = findViewById(R.id.message);
-//        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     private void refreshDishes()
@@ -146,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
     private void initDishes()
     {
         dishList.clear();
-        for(int i = 0; i < 20; i++)     //select 20 images at random to display.
+        for(int i = 0; i < 14; i++)     //select 20 images at random to display.
         {
             Random random = new Random();
             int index = random.nextInt(dishes.length);

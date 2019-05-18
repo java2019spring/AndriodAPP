@@ -28,8 +28,7 @@
             android:name=".SignupActivity"
             android:label="Sign up"></activity>
         <activity
-            android:name=".LoginActivity"
-            android:label="Login">
+            android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

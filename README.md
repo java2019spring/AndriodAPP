@@ -60,3 +60,5 @@ commit18: add plate CV
 commit19: add comment
 
 commit20: add SharedPreference to save the comment
+
+commit21: Polish the app
