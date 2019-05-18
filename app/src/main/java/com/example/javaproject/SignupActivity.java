@@ -31,7 +31,7 @@ public class SignupActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.login_toolbar);
         setSupportActionBar(toolbar);
 
-        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        pref = getSharedPreferences("LogInfo", MODE_PRIVATE);
         accountEdit = (EditText) findViewById(R.id.account);
         passwordEdit = (EditText) findViewById(R.id.password);
         sign_up = (Button) findViewById(R.id.sign_up);

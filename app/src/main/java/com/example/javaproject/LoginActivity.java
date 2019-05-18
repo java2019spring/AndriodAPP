@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        pref = getSharedPreferences("LogInfo", MODE_PRIVATE);
         accountEdit = (EditText) findViewById(R.id.account);
         passwordEdit = (EditText) findViewById(R.id.password);
         rememberPass = (CheckBox) findViewById(R.id.remember_pass);
@@ -44,10 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         boolean isRemember = pref.getBoolean("remember_password", false);
         if(isRemember)
         {
-            String account = pref.getString("account_default", "");
-            String password = pref.getString("password", "");
-            accountEdit.setText(account);
-            passwordEdit.setText(password);
+            String account1 = pref.getString("account_default", "");
+            String password1 = pref.getString("password", "");
+            accountEdit.setText(account1);
+            passwordEdit.setText(password1);
             rememberPass.setChecked(true);
         }
 
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = passwordEdit.getText().toString();
                 String truePassword = pref.getString(account, "");
 
-                if(truePassword.equals(password))   //account matches the password
+                if(!account.equals("") && !truePassword.equals("") && truePassword.equals(password))   //account matches the password
                 {
                     editor = pref.edit();
                     if(rememberPass.isChecked())
@@ -77,7 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(LoginActivity.this, "Account or password is invalid", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, truePassword, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LoginActivity.this, "Account or password is invalid", Toast.LENGTH_SHORT).show();
                 }
             }
         });

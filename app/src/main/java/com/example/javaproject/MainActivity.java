@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                mDrawerLayout.closeDrawers();           // Do nothing here. We can add sth later.
+                mDrawerLayout.closeDrawers();
                 return true;
             }
         });
