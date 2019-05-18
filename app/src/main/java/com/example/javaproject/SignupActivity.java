@@ -50,7 +50,7 @@ public class SignupActivity extends AppCompatActivity {
                 editor.putString(account, password);
                 editor.apply();
                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
-                intent.putExtra("account", account);
+                intent.putExtra("Account", account);
                 startActivity(intent);
                 finish();
                 }

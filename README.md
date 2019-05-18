@@ -21,7 +21,7 @@
 - share
 - scan
 - plate CV
-- comment
+- comment+SharedPreference
 
 
 
@@ -58,3 +58,5 @@ commit17: add the function of scanning
 commit18: add plate CV
 
 commit19: add comment
+
+commit20: add SharedPreference to save the comment

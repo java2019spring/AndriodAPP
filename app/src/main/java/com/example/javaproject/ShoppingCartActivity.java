@@ -68,11 +68,14 @@ public class ShoppingCartActivity extends AppCompatActivity {
     private static final String TAG = "ShoppingCartActivity";
     private Button Pay;
     private TextView textView;
+    private String account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
+        Intent intent = getIntent();
+        account = intent.getStringExtra("Account");
 
         //toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -197,6 +200,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
                 break;
             case R.id.comment:
                 Intent intent_comment = new Intent(ShoppingCartActivity.this, CommentActivity.class);
+                intent_comment.putExtra("Account", account);
                 startActivity(intent_comment);
                 break;
             case R.id.toolbar_log_out:

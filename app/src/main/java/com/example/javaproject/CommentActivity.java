@@ -1,6 +1,7 @@
 package com.example.javaproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -35,6 +36,8 @@ public class CommentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
+        Intent intent = getIntent();
+        final String account = intent.getStringExtra("Account");
 
         //toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -75,6 +78,13 @@ public class CommentActivity extends AppCompatActivity {
                 {
                     Msg msg = new Msg(content, Msg.TYPE_SENT);
                     msgList.add(msg);
+
+                    SharedPreferences pref = getSharedPreferences("comment", MODE_PRIVATE);
+                    String str = pref.getString("Remarks", "");
+                    SharedPreferences.Editor editor = getSharedPreferences("comment", MODE_PRIVATE).edit();
+                    String newStr = str + "_" + account + ": " + content;
+                    editor.putString("Remarks", newStr);
+                    editor.apply();
                     adapter.notifyItemInserted(msgList.size() - 1); //new msg
                     msgRecyclerView.scrollToPosition(msgList.size() - 1);
                     inputText.setText("");  //clear the input text
@@ -85,12 +95,18 @@ public class CommentActivity extends AppCompatActivity {
 
     private void initMsg()
     {
-        Msg msg1 = new Msg("The app is very handful!", Msg.TYPE_RECEIVED);
-        Msg msg2 = new Msg("I love it!", Msg.TYPE_RECEIVED);
-        Msg msg3 = new Msg("I have spent every coin I have on dishes since I downloaded this app ...", Msg.TYPE_RECEIVED);
-        msgList.add(msg1);
-        msgList.add(msg2);
-        msgList.add(msg3);
+//        SharedPreferences.Editor editor = getSharedPreferences("comment", MODE_PRIVATE).edit();
+//        editor.putString("Remarks", "Xiao: The app is very handful!_Lu: I love it!_Mai: I have spent every coin I have on dishes since I downloaded this app ...");
+//        editor.apply();
+
+        SharedPreferences pref = getSharedPreferences("comment", MODE_PRIVATE);
+        String[] strs = pref.getString("Remarks", "").split("_");
+        int len = strs.length;
+        for(int i = 0; i< len; i++)
+        {
+            Msg msg = new Msg(strs[i], Msg.TYPE_RECEIVED);
+            msgList.add(msg);
+        }
     }
 
     //create the top menu
